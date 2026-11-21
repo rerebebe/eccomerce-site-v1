@@ -1,0 +1,128 @@
+---
+const { current = 'index' } = Astro.props;
+const LINKS = [
+  { k: "index", num: "01", en: "HOME", zh: "首頁", href: "/" },
+  { k: "atelier", num: "02", en: "ATELIER", zh: "工作室", href: "/atelier/" },
+  { k: "bespoke", num: "03", en: "BESPOKE", zh: "訂製流程", href: "/bespoke/" },
+  { k: "registry", num: "04", en: "THE REGISTRY", zh: "編號檔案", href: "/registry/" },
+  { k: "press", num: "05", en: "PRESS", zh: "媒體與影像", href: "/press/" },
+  { k: "book", num: "06", en: "BOOK THE ATELIER", zh: "預約", href: "/book/" }
+];
+const here = LINKS.find((l) => l.k === current);
+const links = LINKS.map((l) => ({ ...l, current: l.k === current, mark: l.k === current ? "●" : "→" }));
+const pageLabel = current === "book" ? "BOOK" : (current !== "index" && here ? here.en : false);
+---
+<div class="ofo-d">
+  <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 60; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 0 clamp(16px,3vw,40px); height: 50px; background: var(--hdr); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); color: var(--ink); font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif">
+    <div style="display:flex;align-items:baseline;gap:14px;min-width:0">
+      <a href="/" aria-label="ONE OF ONE" style="display:flex;align-items:center;gap:12px">
+        <span role="img" aria-label="ONE OF ONE" style="display:block;width:154px;height:18px;-webkit-mask:url(/assets/logo-black.png) left center/contain no-repeat;mask:url(/assets/logo-black.png) left center/contain no-repeat;background:currentColor"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--ink)">獨壹</span>
+      </a>
+      {pageLabel && (<Fragment>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--accent)">/ {pageLabel}</span>
+      </Fragment>)}
+    </div>
+    <div style="display:flex;align-items:center;gap:clamp(14px,2vw,28px)">
+      <a href="/book/" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.22em;color:var(--ink)">預約 / BOOK</a>
+      <button type="button" data-menu-open style="display:flex;align-items:center;gap:9px;background:none;border:0;padding:6px 0;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.22em;color:var(--ink)">
+        <span role="presentation" style="display: block; width: 26px; height: 14px; -webkit-mask: url(/assets/wordmark/black/o2.png) center/contain no-repeat; mask: url(/assets/wordmark/black/o2.png) center/contain no-repeat; background: currentColor; font-size: 10px"></span>
+        MENU
+      </button>
+    </div>
+  </header>
+</div>
+
+<div class="ofo-m">
+  <header style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;height:56px;background:var(--hdr);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);color:var(--ink)">
+    <a href="/" aria-label="ONE OF ONE" style="display:block;width:128px;height:15px;-webkit-mask:url(/assets/logo-black.png) left center/contain no-repeat;mask:url(/assets/logo-black.png) left center/contain no-repeat;background:currentColor"></a>
+    {pageLabel && (<Fragment>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--accent)">{pageLabel}</span>
+    </Fragment>)}
+  </header>
+  <nav style="position:fixed;left:0;right:0;bottom:0;z-index:61;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:8px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:var(--hdr);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.2em">
+    <button type="button" data-menu-open style="height:48px;display:flex;align-items:center;justify-content:center;gap:10px;background:none;border:1px solid var(--line);color:var(--ink);cursor:pointer;font-family:inherit;font-size:inherit;letter-spacing:inherit;border-radius:0">
+      <span role="presentation" style="display:block;width:28px;height:15px;-webkit-mask:url(/assets/wordmark/black/o2.png) center/contain no-repeat;mask:url(/assets/wordmark/black/o2.png) center/contain no-repeat;background:currentColor"></span>
+      MENU
+    </button>
+    <a href="/book/" style="height:48px;display:flex;align-items:center;justify-content:center;gap:10px;background:var(--ink);color:var(--bg)">預約試訂 BOOK →</a>
+  </nav>
+</div>
+
+<div data-menu="d" hidden>
+  <div style="position:fixed;inset:0;z-index:90;background:var(--bg);color:var(--ink);animation:ofoFade 0.25s ease both;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;overflow-y:auto">
+    <div style="padding:clamp(24px,5vw,64px);display:flex;flex-direction:column;justify-content:space-between;gap:40px">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <span role="img" aria-label="ONE OF ONE" style="display:block;width:154px;height:18px;-webkit-mask:url(/assets/logo-black.png) left center/contain no-repeat;mask:url(/assets/logo-black.png) left center/contain no-repeat;background:currentColor"></span>
+        <button data-menu-close style="background:none;border:0;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.22em;color:var(--mute)">CLOSE ✕</button>
+      </div>
+      <nav style="display:flex;flex-direction:column;border-bottom:1px solid var(--line)">
+        {links.map((l) => (<Fragment>
+          <a class="hv-hdr-1" href={l.href} data-menu-close style="display:flex;align-items:baseline;gap:14px;padding:12px 0;border-top:1px solid var(--line);font-family:'Bodoni Moda',serif;font-size:clamp(28px,4vw,48px);line-height:1.05;transition:padding 0.3s ease">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:0.1em">{l.num}</span>
+            <span>{l.en}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--mute)">{l.zh}</span>
+            {l.current && (<Fragment>
+              <span style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--accent)">● HERE</span>
+            </Fragment>)}
+          </a>
+        </Fragment>))}
+      </nav>
+      <div style="display:grid;gap:18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:var(--mute);line-height:1.9">
+        <div>所有洽詢請來信<br /><a href="mailto:hello@oneofoneunite.com" style="color:var(--ink);border-bottom:1px solid var(--line)">HELLO@ONEOFONEUNITE.COM</a></div>
+        <div>FOLLOW ON <a href="https://www.instagram.com/oneofone.unite" target="_blank" rel="noopener" style="color:var(--ink);border-bottom:1px solid var(--line)">INSTAGRAM</a></div>
+      </div>
+    </div>
+    <div style="position:relative;min-height:320px;background:var(--bg2);overflow:hidden">
+      <img src="/images/1598808503746-f34c53b9323e-1200x1500-bw.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+    </div>
+  </div>
+</div>
+
+<div data-menu="m" hidden>
+  <div style="position:fixed;inset:0;z-index:90;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;overflow-y:auto;animation:ofoSheet 0.42s cubic-bezier(0.2,0.7,0.2,1) both;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif">
+    <div style="display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 4px 0 16px;border-bottom:1px solid var(--line);flex:none">
+      <span role="img" aria-label="ONE OF ONE" style="display:block;width:128px;height:15px;-webkit-mask:url(/assets/logo-black.png) left center/contain no-repeat;mask:url(/assets/logo-black.png) left center/contain no-repeat;background:currentColor"></span>
+      <button data-menu-close aria-label="Close menu" style="width:52px;height:52px;background:none;border:0;cursor:pointer;font-size:20px;color:var(--ink)">✕</button>
+    </div>
+    <nav style="flex:1;padding:4px 16px">
+      {links.map((l) => (<Fragment>
+        <a href={l.href} data-menu-close style="display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:8px;min-height:72px;border-bottom:1px solid var(--line)">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent)">{l.num}</span>
+          <span style="display:grid;gap:2px">
+            <span style="font-family:'Bodoni Moda',serif;font-size:28px;line-height:1.05">{l.en}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:var(--mute)">{l.zh}</span>
+          </span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent)">{l.mark}</span>
+        </a>
+      </Fragment>))}
+    </nav>
+    <div style="flex:none;display:grid;gap:8px;padding:16px 16px calc(16px + env(safe-area-inset-bottom));border-top:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em">
+      <a href="/book/" data-menu-close style="height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:var(--ink);color:var(--bg)">預約試訂 BOOK A FITTING<span>→</span></a>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <a href="mailto:hello@oneofoneunite.com" style="height:48px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line)">EMAIL</a>
+        <a href="https://www.instagram.com/oneofone.unite" target="_blank" rel="noopener" style="height:48px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line)">INSTAGRAM</a>
+      </div>
+    </div>
+  </div>
+</div>
+<style is:global>
+.hv-hdr-1:hover{padding-left:14px !important}
+</style>
+<script>
+const mq = window.matchMedia("(max-width: 760px)");
+const menus = [...document.querySelectorAll("[data-menu]")];
+function openMenu() {
+  const want = mq.matches ? "m" : "d";
+  menus.forEach((el) => { el.hidden = el.dataset.menu !== want; });
+  document.body.style.overflow = "hidden";
+}
+function closeMenu() {
+  menus.forEach((el) => { el.hidden = true; });
+  document.body.style.overflow = "";
+}
+document.querySelectorAll("[data-menu-open]").forEach((el) => el.addEventListener("click", openMenu));
+document.querySelectorAll("[data-menu-close]").forEach((el) => el.addEventListener("click", closeMenu));
+window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); });
+window.addEventListener("pageshow", (e) => { if (e.persisted) closeMenu(); });
+</script>

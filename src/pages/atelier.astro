@@ -1,0 +1,133 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+---
+<Base title="Atelier — ONE OF ONE 獨壹">
+<div style="background:var(--bg);color:var(--ink);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;overflow-x:clip">
+  <Header current="atelier" />
+
+  <section data-screen-label="01 Title" style="padding:calc(64px + clamp(56px,9vw,140px)) clamp(16px,3vw,40px) clamp(40px,6vw,90px)">
+    <div style="max-width:1320px;margin:0 auto">
+      <div style="display:flex;align-items:baseline;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.22em;color:var(--mute);padding-bottom:clamp(24px,4vw,48px)">
+        <span style="color:var(--accent)">02</span>
+        <span>ATELIER — 工作室</span>
+        <span style="flex:1;height:1px;background:var(--line)"></span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px">
+        <h1 data-rise="1" style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(60px,12vw,190px);line-height:0.88;letter-spacing:-0.015em;opacity:0;transform:translateY(40px);transition:opacity 1.1s ease,transform 1.3s cubic-bezier(0.2,0.7,0.2,1)">Atelier</h1>
+        <p data-rise="1" style="margin:0;max-width:40ch;font-size:clamp(15px,1.15vw,17px);line-height:1.75;color:var(--mute);text-wrap:pretty;opacity:0;transform:translateY(24px);transition:opacity 1s ease 0.2s,transform 1.2s cubic-bezier(0.2,0.7,0.2,1) 0.2s">以高級剪裁與低調奢華為核心的台北工作室。一張紙型、一匹布、一個人。</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="02 Wide image" style="padding:0 clamp(16px,3vw,40px)">
+    <div data-reveal="1" style="position:relative;max-width:1320px;margin:0 auto;aspect-ratio:var(--ar-wide);overflow:hidden;background:var(--bg2);clip-path:inset(100% 0 0 0);transition:clip-path 1.6s cubic-bezier(0.77,0,0.18,1) 0.2s">
+      <div data-parallax="-0.1" style="position:absolute;top:-10%;bottom:-10%;left:0;right:0">
+        <img src="/images/1633655442356-ab2dbc69c772-2200x1200-bw.jpg" alt="" style="display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.18);transition:transform 2.2s cubic-bezier(0.2,0.7,0.2,1) 0.2s" />
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="03 Manifesto" style="padding:clamp(70px,10vw,160px) clamp(16px,3vw,40px)">
+    <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(30px,5vw,90px);align-items:start">
+      <div data-rise="1" style="opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1.2s cubic-bezier(0.2,0.7,0.2,1)">
+        <h2 style="margin: 0; font-family: 'Bodoni Moda',serif; font-weight: 400; font-size: clamp(32px,5vw,74px); line-height: 1; letter-spacing: -0.01em; text-wrap: balance">It all starts<br />with the cloth.</h2>
+        <p style="margin:24px 0 0;font-size:clamp(15px,1.1vw,17px);line-height:1.75;color:var(--mute);max-width:44ch;text-wrap:pretty">從細緻的布料選擇到講究的版型設計，每一處細節皆經過精心雕琢。我們不做尺碼，只做那一個人的身形。</p>
+      </div>
+      <div style="display:grid;gap:clamp(22px,3vw,40px)">
+        <div data-rise="1" style="border-top:1px solid var(--line);padding-top:18px;opacity:0;transform:translateY(28px);transition:opacity 1s ease 0.1s,transform 1.2s cubic-bezier(0.2,0.7,0.2,1) 0.1s">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--accent);padding-bottom:10px">ⅰ — 版型 CUT</div>
+          <p style="margin:0;font-size:15px;line-height:1.75;color:var(--mute);text-wrap:pretty">一套為身形重畫的紙型。肩線、胸圍、腰身皆以個人量身數據重製，而非既有尺碼的增減。</p>
+        </div>
+        <div data-rise="1" style="border-top:1px solid var(--line);padding-top:18px;opacity:0;transform:translateY(28px);transition:opacity 1s ease 0.2s,transform 1.2s cubic-bezier(0.2,0.7,0.2,1) 0.2s">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--accent);padding-bottom:10px">ⅱ — 布料 CLOTH</div>
+          <p style="margin:0;font-size:15px;line-height:1.75;color:var(--mute);text-wrap:pretty">來自英義老廠的羊毛、絲麻與法蘭絨。每一匹僅裁一件，不重複供應。</p>
+        </div>
+        <div data-rise="1" style="border-top:1px solid var(--line);padding-top:18px;opacity:0;transform:translateY(28px);transition:opacity 1s ease 0.3s,transform 1.2s cubic-bezier(0.2,0.7,0.2,1) 0.3s">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--accent);padding-bottom:10px">ⅲ — 中性 UNISEX</div>
+          <p style="margin:0;font-size:15px;line-height:1.75;color:var(--mute);text-wrap:pretty">同一套語彙，適用於所有身形。西裝從來不該分性別，只該分合不合身。</p>
+        </div>
+      </div>
+    </div>
+    <div class="ofo-d">
+<div style="max-width:1320px;margin:clamp(50px,7vw,110px) auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:clamp(14px,2.4vw,36px);align-items:start">
+      <div style="display:grid;gap:12px">
+        <div data-reveal="1" style="position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--bg2);clip-path:inset(100% 0 0 0);transition:clip-path 1.3s cubic-bezier(0.77,0,0.18,1)">
+          <img src="/images/1536867520774-5b4f2628a69b-800x1070-bw.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.18);transition:transform 1.8s cubic-bezier(0.2,0.7,0.2,1)" />
+        </div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--mute)">量身 / MEASURING</span>
+      </div>
+      <div style="display:grid;gap:12px;margin-top:clamp(0px,6vw,110px)">
+        <div data-reveal="1" style="position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--bg2);clip-path:inset(100% 0 0 0);transition:clip-path 1.3s cubic-bezier(0.77,0,0.18,1) 0.15s">
+          <img src="/images/1618587194716-40490bdba417-800x1070-bw.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.18);transition:transform 1.8s cubic-bezier(0.2,0.7,0.2,1) 0.15s" />
+        </div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--mute)">布料 / CLOTH DETAIL</span>
+      </div>
+      <div style="display:grid;gap:12px">
+        <div data-reveal="1" style="position:relative;overflow:hidden;aspect-ratio:3/4;background:var(--bg2);clip-path:inset(100% 0 0 0);transition:clip-path 1.3s cubic-bezier(0.77,0,0.18,1) 0.3s">
+          <img src="/images/1633655442356-ab2dbc69c772-800x1070-bw.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.18);transition:transform 1.8s cubic-bezier(0.2,0.7,0.2,1) 0.3s" />
+        </div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--mute)">手工 / HANDWORK</span>
+      </div>
+    </div>
+</div>
+    <div class="ofo-m">
+    <div style="display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:48px -16px 0;padding:0 16px;scroll-padding:0 16px;scrollbar-width:none">
+      <div style="flex:0 0 74%;scroll-snap-align:start;display:grid;gap:10px">
+        <div style="aspect-ratio:3/4;overflow:hidden;background:var(--bg2)"><img src="/images/1536867520774-5b4f2628a69b-800x1070-bw.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover" /></div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--mute)">量身 / MEASURING</span>
+      </div>
+      <div style="flex:0 0 74%;scroll-snap-align:start;display:grid;gap:10px">
+        <div style="aspect-ratio:3/4;overflow:hidden;background:var(--bg2)"><img src="/images/1618587194716-40490bdba417-800x1070-bw.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover" /></div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--mute)">布料 / CLOTH DETAIL</span>
+      </div>
+      <div style="flex:0 0 74%;scroll-snap-align:start;display:grid;gap:10px">
+        <div style="aspect-ratio:3/4;overflow:hidden;background:var(--bg2)"><img src="/images/1633655442356-ab2dbc69c772-800x1070-bw.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover" /></div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--mute)">手工 / HANDWORK</span>
+      </div>
+      <div style="flex:0 0 4px"></div>
+    </div>
+</div>
+  </section>
+
+  <section data-screen-label="04 Unisex" style="background:var(--bgA);color:var(--inkA);padding:clamp(70px,10vw,160px) clamp(16px,3vw,40px)">
+    <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(28px,5vw,80px);align-items:center">
+      <div data-reveal="1" style="position:relative;overflow:hidden;aspect-ratio:4/5;background:var(--bg2);clip-path:inset(100% 0 0 0);transition:clip-path 1.4s cubic-bezier(0.77,0,0.18,1)">
+        <div data-parallax="-0.08" style="position:absolute;top:-9%;bottom:-9%;left:0;right:0">
+          <img src="/images/1718184021018-d2158af6b321-1100x1400-bw.jpg" alt="" loading="lazy" style="display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.18);transition:transform 1.9s cubic-bezier(0.2,0.7,0.2,1)" />
+        </div>
+      </div>
+      <div data-rise="1" style="opacity:0;transform:translateY(28px);transition:opacity 1s ease 0.2s,transform 1.2s cubic-bezier(0.2,0.7,0.2,1) 0.2s">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.22em;color:var(--accentA);padding-bottom:24px">UNISEX — 不分性別</div>
+        <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(30px,4.4vw,66px);line-height:1.02;text-wrap:balance">The suit was never gendered. Only fitted.</h2>
+        <p style="margin:24px 0 0;font-size:clamp(15px,1.1vw,17px);line-height:1.75;color:var(--muteA);max-width:46ch;text-wrap:pretty">雙排扣、無領綁帶、背心、直筒長褲——同一套版型語彙開放給所有人。我們量的是肩與腰，不是標籤。</p>
+        <div style="margin-top:clamp(26px,3vw,42px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));border-top:1px solid var(--lineA)">
+          <div style="padding:20px 18px 0 0">
+            <div style="font-family:'Bodoni Moda',serif;font-size:clamp(28px,2.6vw,40px);line-height:1">28</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:var(--muteA);padding-top:8px;line-height:1.6">量身點位<br />MEASURE POINTS</div>
+          </div>
+          <div style="padding:20px 18px 0 0">
+            <div style="font-family:'Bodoni Moda',serif;font-size:clamp(28px,2.6vw,40px);line-height:1">1/1</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:var(--muteA);padding-top:8px;line-height:1.6">每件唯一<br />PER GARMENT</div>
+          </div>
+          <div style="padding:20px 18px 0 0">
+            <div style="font-family:'Bodoni Moda',serif;font-size:clamp(28px,2.6vw,40px);line-height:1">6–8</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:var(--muteA);padding-top:8px;line-height:1.6">製作週數<br />WEEKS TO MAKE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="05 Next" style="padding:clamp(56px,8vw,120px) clamp(16px,3vw,40px);background:var(--bg2)">
+    <a href="/bespoke/" style="max-width:1320px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:20px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.22em;color:var(--mute)">NEXT — 03</span>
+      <span style="font-family:'Bodoni Moda',serif;font-size:clamp(40px,7vw,110px);line-height:1">Bespoke →</span>
+    </a>
+  </section>
+
+  <Footer />
+</div>
+</Base>

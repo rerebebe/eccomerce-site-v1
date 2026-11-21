@@ -1,0 +1,128 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const ITEMS = [
+  { sn: "001", cat: "TAILORING", en: "Unisex Tailored Double-Breasted Jacket", zh: "男女款訂製雙排扣西裝外套", price: "NT$20,990", lead: "6 WK", flag: "" },
+  { sn: "002", cat: "TAILORING", en: "Unisex Collarless Tie-Front Blazer", zh: "男女款無領綁帶西裝外套", price: "NT$20,990", lead: "6 WK", flag: "" },
+  { sn: "003", cat: "TAILORING", en: "Tailored Waistcoat", zh: "訂製背心", price: "NT$6,990", lead: "4 WK", flag: "" },
+  { sn: "004", cat: "TROUSERS", en: "Fit Straight Tailored Trousers", zh: "合身直筒剪裁長褲", price: "NT$8,990", lead: "4 WK", flag: "" },
+  { sn: "005", cat: "TROUSERS", en: "Ladies' Straight Fit Trousers", zh: "女士 直筒長褲", price: "NT$8,990", lead: "4 WK", flag: "" },
+  { sn: "006", cat: "EVENING", en: "Tailored Backless Dress", zh: "修身露背連身裙", price: "NT$8,990", lead: "5 WK", flag: "1 OF 1" },
+  { sn: "007", cat: "EVENING", en: "Satin V-Neck Slip Dress", zh: "細肩Ｖ領剪裁緞面洋裝", price: "NT$4,990", lead: "3 WK", flag: "" },
+  { sn: "008", cat: "EVENING", en: "Pleated Off-Shoulder Dress", zh: "削肩百摺連衣裙", price: "NT$4,990", lead: "3 WK", flag: "RESERVED" }
+];
+const CATS = ["ALL", "TAILORING", "TROUSERS", "EVENING"];
+const REG_IMG = ["1617137984095-74e4e5e3613f","1594938298603-c8148c4dae35","1593032465175-481ac7f401a0","1618886614638-80e3c103d31a","1600091166971-7f9faad6c1e2","1594938328870-9623159c8c99","1631052066165-9720608b36da","1679101893304-045625840a94","1598915850252-fb07ad1e6768","1480429370139-e0132c086e2a","1617127365659-c47fa864d8bc","1619533394727-57d522857f89","1679101893310-9b9adb4b733b","1675383094481-3e2088da943b","1598808503746-f34c53b9323e","1628565931779-4f4f0b4f578a"];
+const img = (n) => "/images/" + REG_IMG[n % REG_IMG.length] + "-900x1125-bw.jpg";
+const cats = CATS.map((c) => ({ label: c, pressed: c === "ALL" ? "true" : "false" }));
+const items = ITEMS.map((i) => {
+  const n = parseInt(i.sn, 10);
+  return { serial: "N°" + i.sn, cat: i.cat, en: i.en, zh: i.zh, lead: i.lead, flag: i.flag, imgA: img(n * 2 - 2), imgB: img(n * 2 - 1), priceLabel: i.price, flagOrCat: i.flag || i.cat };
+});
+const count = String(items.length).padStart(2, "0") + " ENTRIES";
+---
+<Base title="The Registry — ONE OF ONE 獨壹">
+<div style="background:var(--bg);color:var(--ink);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;overflow-x:clip">
+  <Header current="registry" />
+
+  <section data-screen-label="01 Title" style="padding:calc(64px + clamp(56px,9vw,140px)) clamp(16px,3vw,40px) clamp(30px,4vw,60px)">
+    <div style="max-width:1320px;margin:0 auto">
+      <div style="display:flex;align-items:baseline;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.22em;color:var(--mute);padding-bottom:clamp(24px,4vw,48px)">
+        <span style="color:var(--accent)">04</span>
+        <span>THE REGISTRY — 編號檔案</span>
+        <span style="flex:1;height:1px;background:var(--line)"></span>
+        <span data-reg-count>{count}</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px">
+        <h1 data-rise="1" style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(56px,10.5vw,170px);line-height:0.9;letter-spacing:-0.015em;opacity:0;transform:translateY(40px);transition:opacity 1.1s ease,transform 1.3s cubic-bezier(0.2,0.7,0.2,1)">The Registry</h1>
+        <p data-rise="1" style="margin:0;max-width:40ch;font-size:clamp(15px,1.15vw,17px);line-height:1.75;color:var(--mute);text-wrap:pretty;opacity:0;transform:translateY(24px);transition:opacity 1s ease 0.2s,transform 1.2s cubic-bezier(0.2,0.7,0.2,1) 0.2s">每一件皆登錄編號、布料與紙型。同款不再重製，僅接受個別預訂。<br />A ledger of singular pieces.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="02 Catalogue" style="padding:0 clamp(16px,3vw,40px) clamp(80px,10vw,160px)">
+    <div style="max-width:1320px;margin:0 auto">
+      <div class="reg-filter">
+        {cats.map((cat) => (<Fragment>
+          <button type="button" class="reg-cat" data-cat-btn={cat.label} aria-pressed={cat.pressed}>{cat.label}</button>
+        </Fragment>))}
+      </div>
+      <div class="reg-grid">
+        {items.map((item) => (<Fragment>
+          <div data-cat={item.cat} style="display:contents">
+          <div class="ofo-d">
+          <a href="/book/" data-rise="1" style="display:grid;gap:14px;padding-top:clamp(22px,2.6vw,36px);opacity:0;transform:translateY(28px);transition:opacity 0.9s ease,transform 1.1s cubic-bezier(0.2,0.7,0.2,1)">
+            <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bg2)">
+              <img src={item.imgA} alt={item.en} loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />
+              <img class="hv-reg-1" src={item.imgB} alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.5s ease" />
+              <div style="position:absolute;top:12px;left:12px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:var(--ink);background:var(--bg);padding:5px 8px;pointer-events:none">{item.serial}</div>
+              {item.flag && (<Fragment>
+                <div style="position:absolute;top:12px;right:12px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:var(--bg);background:var(--ink);padding:5px 8px;pointer-events:none">{item.flag}</div>
+              </Fragment>)}
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--accent)">{item.cat}</div>
+              <div style="font-family:'Bodoni Moda',serif;font-size:clamp(18px,1.4vw,22px);line-height:1.25;text-wrap:pretty">{item.en}</div>
+              <div style="font-size:13px;color:var(--mute);line-height:1.5">{item.zh}</div>
+              <div style="display:flex;justify-content:space-between;gap:12px;padding-top:9px;margin-top:4px;border-top:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em">
+                <span>{item.priceLabel}</span>
+                <span style="color:var(--mute)">{item.lead}</span>
+              </div>
+            </div>
+          </a>
+          </div>
+          <div class="ofo-m">
+            <div style="display:grid;gap:10px;padding-top:22px">
+              <div style="position:relative;aspect-ratio:3/4;background:var(--bg2);overflow:hidden">
+                <div style="display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none">
+                  <img src={item.imgA} alt={item.en} loading="lazy" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start" />
+                  <img src={item.imgB} alt="" loading="lazy" style="flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start" />
+                </div>
+                <div style="position:absolute;top:8px;left:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:var(--ink);background:var(--bg);padding:3px 6px;pointer-events:none">{item.serial}</div>
+                <div style="position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:5px;pointer-events:none">
+                  <span style="width:5px;height:5px;border-radius:50%;background:#F9EFE6"></span>
+                  <span style="width:5px;height:5px;border-radius:50%;background:rgba(249,239,230,0.5)"></span>
+                </div>
+              </div>
+              <a href="/book/" style="display:grid;gap:5px">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:var(--accent)">{item.flagOrCat}</span>
+                <span style="font-family:'Bodoni Moda',serif;font-size:16px;line-height:1.25;text-wrap:pretty">{item.en}</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em">{item.priceLabel}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        </Fragment>))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</div>
+</Base>
+<style is:global>
+.reg-filter{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:clamp(24px,3vw,40px);border-bottom:1px solid var(--line)}
+.reg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,373px),1fr));column-gap:clamp(16px,2.4vw,44px);row-gap:clamp(10px,1.5vw,26px)}
+.reg-cat{background:transparent;color:var(--mute);border:1px solid var(--line);padding:10px 16px;height:auto;flex:none;white-space:nowrap;cursor:pointer;border-radius:0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.2em;transition:background 0.2s ease,color 0.2s ease}
+.reg-cat[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+@media (max-width:760px){.reg-filter{position:sticky;top:56px;z-index:5;background:var(--bg);flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:10px 16px}.reg-grid{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:12px;row-gap:14px}.reg-cat{padding:0 16px;height:40px}}
+.hv-reg-1:hover{opacity:1 !important}
+</style>
+<script>
+const btns = [...document.querySelectorAll("[data-cat-btn]")];
+const entries = [...document.querySelectorAll("[data-cat]")];
+const count = document.querySelector("[data-reg-count]");
+btns.forEach((btn) => btn.addEventListener("click", () => {
+  const cat = btn.dataset.catBtn;
+  btns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+  let n = 0;
+  entries.forEach((el) => {
+    const on = cat === "ALL" || el.dataset.cat === cat;
+    el.style.display = on ? "contents" : "none";
+    if (on) n++;
+  });
+  if (count) count.textContent = String(n).padStart(2, "0") + " ENTRIES";
+  window.dispatchEvent(new Event("scroll"));
+}));
+</script>

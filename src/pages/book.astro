@@ -1,0 +1,99 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+---
+<Base title="Book the Atelier — ONE OF ONE">
+<div style="background:var(--bg);color:var(--ink);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;overflow-x:clip">
+  <Header current="book" />
+
+  <section data-screen-label="01 Book the Atelier" style="padding-top:64px">
+
+    <div style="display: flex; align-items: center; justify-content: center; padding: clamp(32px,6vw,96px) clamp(24px,8vw,160px)">
+      <div style="position:relative;width:min(100%,880px);aspect-ratio:3/2;max-height:60vh"><img src="/images/book-hero.webp" alt="ONE OF ONE atelier, Taipei" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 100%" /></div>
+    </div><section id="appointment" data-screen-label="Appointment" style="background:#ECE2D9;color:#242321;padding:clamp(56px,9vw,150px) clamp(16px,3vw,40px)">
+    <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(32px,5vw,80px)">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.22em;color:var(--accent,#736B65);padding-bottom:20px">APPOINTMENT — 預約試訂</div>
+        <h2 style="margin:0;font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(30px,5vw,72px);line-height:1;text-wrap:balance">Come in.<br />Be measured.</h2>
+        <div style="margin-top:clamp(28px,4vw,48px);display:grid;gap:22px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;line-height:1.95;color:#5E5955">
+          <div>
+            <div style="color:#242321;letter-spacing:0.2em;padding-bottom:6px">ATELIER</div>
+            台北市大安區 · BY APPOINTMENT ONLY<br />TAIPEI, TAIWAN
+          </div>
+          <div>
+            <div style="color:#242321;letter-spacing:0.2em;padding-bottom:6px">HOURS</div>
+            MON – FRI　13:00 – 21:00<br />SAT　13:00 – 19:00<br />SUN　CLOSED
+          </div>
+          <div>
+            <div style="color:#242321;letter-spacing:0.2em;padding-bottom:6px">CONTACT</div>
+            <a href="mailto:hello@oneofoneunite.com" style="border-bottom:1px solid rgba(36,35,33,0.3)">HELLO@ONEOFONEUNITE.COM</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div data-book-sent hidden>
+          <div style="border:1px solid rgba(36,35,33,0.25);padding:clamp(26px,4vw,44px);display:flex;flex-direction:column;gap:14px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.22em;color:var(--accent,#736B65)">RECEIVED — 已收到</span>
+            <span style="font-family:'Bodoni Moda',serif;font-size:clamp(22px,2.4vw,34px);line-height:1.15">Thank you. We will write back within one working day.</span>
+            <span style="font-size:14px;line-height:1.7;color:#5E5955">我們會在一個工作日內與你聯繫，安排第一次諮詢。</span>
+          </div>
+        </div>
+        <div data-book-formwrap>
+          <form name="booking" method="POST" data-netlify="true" data-book-form style="display:grid;gap:20px">
+            <input type="hidden" name="form-name" value="booking" />
+            <label style="display:grid;gap:8px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#5E5955">姓名 / NAME</span>
+              <input class="hv-book-1" type="text" name="name" required placeholder="王小明 / Ming Wang" style="background:none;border:0;border-bottom:1px solid rgba(36,35,33,0.3);padding:10px 0;font-size:16px;outline:none" />
+            </label>
+            <label style="display:grid;gap:8px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#5E5955">聯絡方式 / EMAIL OR LINE</span>
+              <input class="hv-book-2" type="text" name="contact" required placeholder="you@email.com" style="background:none;border:0;border-bottom:1px solid rgba(36,35,33,0.3);padding:10px 0;font-size:16px;outline:none" />
+            </label>
+            <label style="display:grid;gap:8px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#5E5955">需求 / SERVICE</span>
+              <select name="service" style="background:none;border:0;border-bottom:1px solid rgba(36,35,33,0.3);padding:10px 0;font-size:16px;outline:none;border-radius:0">
+                <option>訂製西裝 — Bespoke suit</option>
+                <option>訂製外套 — Jacket only</option>
+                <option>禮服 / 婚禮 — Eveningwear &amp; wedding</option>
+                <option>成衣修改 — Alterations</option>
+                <option>其他 — Something else</option>
+              </select>
+            </label>
+            <label style="display:grid;gap:8px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#5E5955">場合與時間 / OCCASION &amp; DATE</span>
+              <textarea class="hv-book-3" name="occasion" rows="3" placeholder="例：三月婚禮，想做一套雙排扣。" style="background:none;border:0;border-bottom:1px solid rgba(36,35,33,0.3);padding:10px 0;font-size:16px;outline:none;resize:vertical"></textarea>
+            </label>
+            <button class="hv-book-4" type="submit" style="justify-self:start;margin-top:8px;background:#242321;color:#F9EFE6;border:0;padding:16px 30px;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.22em">送出預約 / REQUEST →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  </section>
+
+  <Footer />
+</div>
+</Base>
+<style is:global>
+.hv-book-1:focus{border-bottom-color:#242321 !important}
+.hv-book-2:focus{border-bottom-color:#242321 !important}
+.hv-book-3:focus{border-bottom-color:#242321 !important}
+.hv-book-4:hover{background:var(--accent,#736B65) !important}
+</style>
+<script>
+const form = document.querySelector("[data-book-form]");
+if (form) form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const done = () => {
+    document.querySelector("[data-book-formwrap]").hidden = true;
+    document.querySelector("[data-book-sent]").hidden = false;
+  };
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(new FormData(form)).toString()
+  }).then(done, done);
+});
+</script>
